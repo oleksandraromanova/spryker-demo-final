@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @method \Pyz\Zed\Faq\Communication\FaqCommunicationFactory getFactory()
+ * @method \Pyz\Zed\Faq\Business\FaqFacadeInterface getFacade()
  */
 class CreateController extends AbstractController
 {
@@ -22,7 +23,10 @@ class CreateController extends AbstractController
             ->handleRequest($request);
 
         if ($faqForm->isSubmitted() && $faqForm->isValid()) {
-            $this->addSuccessMessage('FAQ was created. Well not yet :)');
+            $this->getFacade()
+                ->saveFaq($faqForm->getData());
+
+            $this->addSuccessMessage('FAQ was created.');
 
             return $this->redirectResponse('/faq/list');
         }
