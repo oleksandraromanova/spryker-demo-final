@@ -1,0 +1,14 @@
+{% extends template('page-layout-main') %}
+
+{% define data = {
+    faq: _view.faq
+} %}
+
+{% block content %}
+    <div>
+        <div>Name: {{ data.faq.name }}</div>
+        <div>Answer: {{ data.faq.answer }}</div>
+    </div>
+{% endblock %}
+
+
