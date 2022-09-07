@@ -15,5 +15,8 @@
                 size="1" default="1"/>
         <column name="votes" required="false" type="INTEGER"
                 size="3"/>
+        <behavior name="event">
+            <parameter name="pyz_faq_all" column="*"/>
+        </behavior>
     </table>
 </database>
