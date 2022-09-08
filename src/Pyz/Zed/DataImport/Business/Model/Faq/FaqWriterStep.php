@@ -6,6 +6,7 @@ use Orm\Zed\Faq\Persistence\PyzFaqQuery;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
+use Pyz\Zed\Faq\Dependency\FaqEvents;
 
 class FaqWriterStep extends PublishAwareStep implements DataImportStepInterface
 {
@@ -34,6 +35,8 @@ class FaqWriterStep extends PublishAwareStep implements DataImportStepInterface
         if ($faqEntity->isNew() || $faqEntity->isModified()) {
             $faqEntity->save();
         }
+
+        $this->addPublishEvents(FaqEvents::ENTITY_PYZ_FAQ_CREATE, $faqEntity->getIdFaq());
     }
 }
 

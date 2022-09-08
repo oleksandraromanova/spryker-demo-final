@@ -17,6 +17,8 @@ use SprykerShop\Shared\FileManagerWidget\CmsContentWidgetConfigurationProvider\F
 use SprykerShop\Yves\CmsContentWidgetProductConnector\Plugin\CmsProductContentWidgetPlugin;
 use SprykerShop\Yves\CmsContentWidgetProductSetConnector\Plugin\CmsProductSetContentWidgetPlugin;
 use SprykerShop\Yves\FileManagerWidget\Plugin\CmsContentWidget\FileManagerWidgetPlugin;
+use Pyz\Shared\CmsContentWidgetFaqConnector\ContentWidgetConfigurationProvider\CmsContentWidgetFaqConnectorConfigurationProvider;
+use Pyz\Yves\CmsContentWidgetFaqConnector\Plugin\CmsContentWidget\FaqContentWidgetPlugin;
 
 class CmsContentWidgetDependencyProvider extends SprykerCmsContentWidgetDependencyProvider
 {
@@ -42,6 +44,9 @@ class CmsContentWidgetDependencyProvider extends SprykerCmsContentWidgetDependen
             ),
             CmsContentWidgetCmsBlockConnectorConfigurationProvider::FUNCTION_NAME => new CmsBlockContentWidgetPlugin(
                 new CmsContentWidgetCmsBlockConnectorConfigurationProvider()
+            ),
+            CmsContentWidgetFaqConnectorConfigurationProvider::FUNCTION_NAME => new FaqContentWidgetPlugin(
+                new CmsContentWidgetFaqConnectorConfigurationProvider()
             ),
         ];
     }
