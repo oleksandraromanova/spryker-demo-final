@@ -24,6 +24,22 @@ class FaqFacade extends AbstractFacade implements FaqFacadeInterface
         return $this->getFactory()
             ->createFaqSaver()
             ->save($faqTransfer);
-
     }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
+     * @param int $idFaq
+     *
+     * @return \Generated\Shared\Transfer\FaqTransfer|null
+     */
+    public function findFaqById(int $idFaq): ?FaqTransfer
+    {
+        return $this->getFactory()
+            ->createFaqReader()
+            ->findFaqById($idFaq);
+    }
+
 }
