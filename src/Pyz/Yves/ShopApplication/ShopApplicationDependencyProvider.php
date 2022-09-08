@@ -97,6 +97,7 @@ use SprykerShop\Yves\ShopApplication\ShopApplicationDependencyProvider as Spryke
 use SprykerShop\Yves\TabsWidget\Widget\FullTextSearchTabsWidget;
 use SprykerShop\Yves\WebProfilerWidget\Plugin\Application\WebProfilerApplicationPlugin;
 use SprykerShop\Yves\WishlistWidget\Widget\WishlistMenuItemWidget;
+use Pyz\Yves\FaqWidget\Widget\FaqWidget;
 
 /**
  * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
@@ -180,6 +181,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             OrderCancelButtonWidget::class,
             CartAddProductAsSeparateItemWidget::class,
             AssetWidget::class,
+            FaqWidget::class,
         ];
     }
 
