@@ -3,11 +3,13 @@
 namespace Pyz\Zed\Faq\Communication\Controller;
 
 use Generated\Shared\Transfer\FaqTransfer;
+use Pyz\Zed\Faq\Business\FaqFacade;
 use Spryker\Zed\Kernel\Communication\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @method \Pyz\Zed\Faq\Communication\FaqCommunicationFactory getFactory()
+ * @method \Pyz\Zed\Faq\Business\FaqFacade getFacade()
  */
 class EditController extends AbstractController
 {
@@ -18,10 +20,19 @@ class EditController extends AbstractController
      */
     public function indexAction(Request $request)
     {
-// $idPlanet = $this->castId($request->query->get('id-planet'));
-        $faqTransfer = (new FaqTransfer()) // TODO add business logic to retrieve Planet by id
-        ->setName('Delivery')
-            ->setAnswer('The terms of delivery.');
+        $idFaq = $this->castId($request->query->get('id-faq'));
+        $faq = $this->getFacade()
+            ->findFaqById($idFaq);
+
+        if (is_null($faq)) {
+            $this->addErrorMessage('FAQ with given id not exists.');
+            return $this->redirectResponse('/faq/list');
+        }
+
+        $faqTransfer = (new FaqTransfer())
+            ->setIdFaq($idFaq)
+            ->setName($faq->getName())
+            ->setAnswer($faq->getAnswer());
 
         $faqForm = $this->getFactory()
             ->createFaqForm($faqTransfer)
