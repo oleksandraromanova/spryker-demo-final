@@ -7,6 +7,14 @@
             "namespace": "",
             "themes": [],
             "defaultTheme": "default"
+        },
+        {
+            "codeBucket": "US",
+            "namespace": "US",
+            "themes": [
+                "alternative"
+            ],
+            "defaultTheme": "default"
         }
     ]
 }

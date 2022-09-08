@@ -1,0 +1,16 @@
+{% extends template('widget') %}
+
+{% define data = {
+    faq: _widget.faq
+} %}
+
+{% block body %}
+    {% include molecule('faq-box') with {
+        data: {
+            name: data.faq.name
+        }
+    } only %}
+{% endblock %}
+
+
+
